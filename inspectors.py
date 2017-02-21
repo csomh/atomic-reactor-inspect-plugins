@@ -11,5 +11,6 @@ from __future__ import print_function
 
 
 def get_config(self, module):
+    self.log.info('get_config on {0}'.format(module.__name__))
     self.log.info(module.get_config(self.workspace).cluster_configs)
     self.log.info(module.get_config(self.workspace).conf)

@@ -51,7 +51,8 @@ class InspectPlugins(ExitPlugin):
         self.log.debug('trying to import module {0} ...'.format(name))
         try:
             module = import_module(name)
-        except ImportError:
+        except ImportError as err:
+            self.log.error(err)
             return None
 
         return module
@@ -65,6 +66,7 @@ class InspectPlugins(ExitPlugin):
                 continue
 
             self.function = types.MethodType(function, self)
+            self.log.info('calling {0} for {1}'.format(funk, module.__name__))
             self.function(module)
 
     def run(self):
