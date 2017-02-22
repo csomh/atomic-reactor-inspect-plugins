@@ -47,3 +47,29 @@ to each inspector function specified in `inspector_funk`.
 
 The `plugins` argument is a list, so one can specify multiple plugins to 
 inspect.
+
+For inspecting the workflow state at the build-step phase, the
+`build_inspect.py` plugin is provided. This can be told whether to
+succeed or fail by passing arguments as appropriate when it is
+declared in the buildstep plugins section. A failing declaration would
+be:
+
+```json
+{
+    "name": "buildstep_inspect",
+    "args": {
+        "fail_reason": "insufficient memory"
+    }
+}
+```
+
+A succeeding declaration would be:
+
+```json
+{
+    "name": "buildstep_inspect",
+    "args": {
+        "image_id": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+}
+```
