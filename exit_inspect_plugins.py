@@ -46,6 +46,10 @@ class InspectPlugins(ExitPlugin):
 
     def load(self, plugin):
 
+        if 'name' not in plugin:
+            self.log.info('no module name requested')
+            return None
+
         name = '.'.join([AR_PLUGINS, plugin['name']])
 
         self.log.debug('trying to import module {0} ...'.format(name))
@@ -66,7 +70,8 @@ class InspectPlugins(ExitPlugin):
                 continue
 
             self.function = types.MethodType(function, self)
-            self.log.info('calling {0} for {1}'.format(funk, module.__name__))
+            module_name = module.__name__ if module else module
+            self.log.info('calling {0} for {1}'.format(funk, module_name))
             self.function(module)
 
     def run(self):
@@ -77,5 +82,5 @@ class InspectPlugins(ExitPlugin):
         for plugin in self.plugins:
 
             plugin_module = self.load(plugin)
-            if plugin_module is not None:
-                self.log_calls(plugin_module, plugin['inspect_funk'])
+
+            self.log_calls(plugin_module, plugin['inspect_funk'])
