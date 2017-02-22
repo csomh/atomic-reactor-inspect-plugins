@@ -32,7 +32,7 @@ def get_config(self, module):
 
     cluster_configs = module.get_config(self.workflow).cluster_configs
     cluster_configs = log_cluster_configs(cluster_configs)
-    self.log.info('get_config().cluster_configs:\n', cluster_configs)
+    self.log.info('get_config().cluster_configs:\n%s', cluster_configs)
 
     config = json.dumps(module.get_config(self.workflow).conf, indent=4)
-    self.log.info('get_config().config:\n', config)
+    self.log.info('get_config().config:\n%s', config)
