@@ -12,6 +12,13 @@ We also wanted to try functions provided by these plugins.
 `exit_inspect_plugins.py` and `inspectors.py` should end up in the
 `plugins` directory of the `atomic-reactor` installation in your buildroot.
 
+For example one could add these lines to the Dockerfile of the buildroot:
+
+```
+ADD https://raw.githubusercontent.com/csomh/atomic-reactor-inspect-plugins/master/exit_inspect_plugins.py /usr/lib/python2.7/site-packages/atomic_reactor/plugins/exit_inspect_plugins.py
+ADD https://raw.githubusercontent.com/csomh/atomic-reactor-inspect-plugins/master/inspectors.py /usr/lib/python2.7/site-packages/atomic_reactor/plugins/inspectors.py
+```
+
 Additional functions to inspect the [workflow object](https://github.com/projectatomic/atomic-reactor/blob/master/docs/plugin_development.md) can be added to `inspectors.py`.
 
 All functions will be attached to the plugin instance and will have access
