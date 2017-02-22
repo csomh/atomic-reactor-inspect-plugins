@@ -36,7 +36,9 @@ class InspectPlugins(ExitPlugin):
         plugins = [
             {
                 'name': 'post_compress',
-                'inspect_funk': 'get_config'
+                'inspect_funk': [
+                    'get_config'
+                ]
             }
         ]
         """
